@@ -41,6 +41,18 @@
             </select>
         </div>
 
+        <div class="form-check">
+            @foreach($tags as $tag) *LC*
+                <input {{(in_array($tag->id, old('tags', [])))?'checked':''}} name="tags[]" type="checkbox" class="form-check-input" id="tag_{{$tag->id}}" value="{{$tag->id}}">
+                <Label class="ecc." for="Tag_{{$tag->id}}">{{$tag->name}}</Label>
+            @endforeach
+            @error('content')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+
         <button type="submit" class="btn btn-primary">Save</button>
 
     </form>
